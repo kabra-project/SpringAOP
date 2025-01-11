@@ -16,7 +16,7 @@ public class LoggingAspect {
     @Before("execution (* com.in28minutes.learn_spring_aop.aopexample.business.*.*(..))")
     public void logMethodCall(JoinPoint joinPoint){
 
-        logger.info("Before Aspect - Method is called - {}", joinPoint);
+        logger.info("Before Aspect - {} is called with the following Arguments: {}", joinPoint, joinPoint.getArgs());
 
     }
 }
