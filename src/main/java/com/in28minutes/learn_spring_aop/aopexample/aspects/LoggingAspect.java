@@ -12,21 +12,21 @@ public class LoggingAspect {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Before("execution (* com.in28minutes.learn_spring_aop.aopexample.business.*.*(..))")
+    @Before("CommonPointcutConfig.businessAndDataservicePackageConfig()")
     public void logMethodCallBevorExecution(JoinPoint joinPoint){
 
         logger.info("Before Aspect - {} is called with the following Arguments: {}", joinPoint, joinPoint.getArgs());
 
     }
 
-    @After("execution (* com.in28minutes.learn_spring_aop.aopexample.business.*.*(..))")
+    @After("CommonPointcutConfig.businessAndDataservicePackageConfig()")
     public void logMethodCallAfterExecution(JoinPoint joinPoint){
 
         logger.info("After Aspect - {} has been executed", joinPoint);
 
     }
 
-    @AfterThrowing(pointcut = "execution (* com.in28minutes.learn_spring_aop.aopexample.business.*.*(..))",
+    @AfterThrowing(pointcut = "CommonPointcutConfig.businessAndDataservicePackageConfig()",
                     throwing = "exception")
     public void logMethodCallAfterThrowing(JoinPoint joinPoint, Exception exception){
 
@@ -34,7 +34,7 @@ public class LoggingAspect {
 
     }
 
-    @AfterReturning(pointcut =  "execution (* com.in28minutes.learn_spring_aop.aopexample.business.*.*(..))", returning = "result")
+    @AfterReturning(pointcut =  "CommonPointcutConfig.businessAndDataservicePackageConfig()", returning = "result")
     public void logMethodCallAfterReturning(JoinPoint joinPoint, int result){
 
         logger.info("After Successful Excecution - {} has returned {}", joinPoint, result);
