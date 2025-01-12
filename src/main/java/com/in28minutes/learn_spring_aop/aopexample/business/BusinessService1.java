@@ -14,9 +14,14 @@ public class BusinessService1 {
         this.dataservice1 = dataservice1;
     }
 
-    public int calculateMax(){
+    public int calculateMax() {
         int[] data = dataservice1.retrieveData();
 
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         //throw new RuntimeException("Something went wrong");
 
        return Arrays.stream(data).max().orElse(0);
